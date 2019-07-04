@@ -48,6 +48,13 @@
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
+            <ImageView
+                android:id="@+id/chat_item_content_picture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/message_text_send"
+                android:textSize="14sp" />
+
         </LinearLayout>
     </RelativeLayout>
 

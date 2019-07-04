@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.java.Log;
-import nju.androidchat.client.mvvm0.Mvvm0TalkActivity;
+import nju.androidchat.client.hw1.mvp0.HwTalkActivity;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -22,7 +22,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 public class Utils {
     Properties props = new Properties();
     String CHAT_ACTIVITY_KEY = "chat_activity";
-    Class<?> CHAT_ACTIVITY = Mvvm0TalkActivity.class;
+    Class<?> CHAT_ACTIVITY = HwTalkActivity.class;
 
     public void jumpTo(AppCompatActivity activity, Class<?> clazz) {
         Intent intent = new Intent(activity.getBaseContext(), clazz);

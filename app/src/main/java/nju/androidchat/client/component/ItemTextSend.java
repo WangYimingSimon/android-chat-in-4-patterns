@@ -3,8 +3,10 @@ package nju.androidchat.client.component;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ import nju.androidchat.client.R;
 public class ItemTextSend extends LinearLayout implements View.OnLongClickListener {
     @StyleableRes
     int index0 = 0;
+    private ImageView imageView;
 
     private TextView textView;
     private Context context;
@@ -25,6 +28,7 @@ public class ItemTextSend extends LinearLayout implements View.OnLongClickListen
     @Setter private OnRecallMessageRequested onRecallMessageRequested;
 
     public ItemTextSend(Context context, String text, UUID messageId, OnRecallMessageRequested onRecallMessageRequested) {
+
         super(context);
         this.context = context;
         inflate(context, R.layout.item_text_send, this);
@@ -36,6 +40,20 @@ public class ItemTextSend extends LinearLayout implements View.OnLongClickListen
         setText(text);
     }
 
+    public ItemTextSend(Context context, Bitmap pic, UUID messageId, OnRecallMessageRequested onRecallMessageRequested) {
+
+        super(context);
+        this.context = context;
+        inflate(context, R.layout.item_text_send, this);
+        this.imageView = findViewById(R.id.chat_item_content_picture);
+        this.textView = findViewById(R.id.chat_item_content_text);
+        this.messageId = messageId;
+        this.onRecallMessageRequested = onRecallMessageRequested;
+        this.textView.setVisibility(GONE);
+
+        this.setOnLongClickListener(this);
+        setImage(pic);
+    }
     public String getText() {
         return textView.getText().toString();
     }
@@ -43,6 +61,8 @@ public class ItemTextSend extends LinearLayout implements View.OnLongClickListen
     public void setText(String text) {
         textView.setText(text);
     }
+
+    public void setImage(Bitmap bitmap){imageView.setImageBitmap(bitmap);}
 
     @Override
     public boolean onLongClick(View v) {
